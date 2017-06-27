@@ -25,13 +25,6 @@ ARGV[0].to_i.times do
      web_process.fill_in('user[password_confirmation]', :with => random_Password)
      web_process.check ('user_agreement')
      web_process.find('input.btn[type="submit"').click
-     #Looking for troubles or errors
-     if web_process.first('.block-alerts') != nil
-       response=JSON.parse((open("https://post-shift.ru/api.php?action=delete&type=json&key=#{@key}")).string)
-       print response['delete']
-       kol1 += 1
-       break
-     end
      #Getting a first letter from email
      while true do begin
        response=JSON.parse((open("https://post-shift.ru/api.php?action=getmail&type=json&key=#{@key}&id=1")).string)
@@ -41,6 +34,13 @@ ARGV[0].to_i.times do
          web_process.visit link.join('=')
          break
      end end
+     #Looking for troubles or errors
+     if web_process.first('.block-alerts') == nil
+       response=JSON.parse((open("https://post-shift.ru/api.php?action=delete&type=json&key=#{@key}")).string)
+       print response['delete']
+       kol1 += 1
+       break
+     end
      #Deleting the email and printing the results
      response=JSON.parse((open("https://post-shift.ru/api.php?action=delete&type=json&key=#{@key}")).string)
      print response['delete']
