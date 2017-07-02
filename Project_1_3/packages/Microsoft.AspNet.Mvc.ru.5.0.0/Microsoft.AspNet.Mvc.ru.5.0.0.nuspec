@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.AspNet.Mvc.ru</id>
+    <version>5.0.0</version>
+    <title>Русские ресурсы Microsoft ASP.NET MVC</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/aspnetcomponent_rtw_RUS.htm</licenseUrl>
+    <projectUrl>http://www.asp.net/mvc</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Этот пакет содержит русские вспомогательные сборки для ASP.NET MVC.</description>
+    <summary>Русские ресурсы для пакета Microsoft.AspNet.Mvc</summary>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <language>ru</language>
+    <tags>Microsoft AspNet Mvc AspNetMvc</tags>
+    <dependencies>
+      <dependency id="Microsoft.AspNet.Mvc" version="[5.0.0]" />
+    </dependencies>
+  </metadata>
+</package>

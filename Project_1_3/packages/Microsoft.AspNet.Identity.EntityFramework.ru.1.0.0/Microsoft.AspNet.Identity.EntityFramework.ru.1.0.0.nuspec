@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.AspNet.Identity.EntityFramework.ru</id>
+    <version>1.0.0</version>
+    <title>Русские ресурсы Microsoft ASP.NET Identity EntityFramework</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/aspnetcomponent_rtw_RUS.htm</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Этот пакет содержит русские вспомогательные сборки для библиотек ASP.NET Identity Entity Framework.</description>
+    <summary>Русские ресурсы для пакета Microsoft.AspNet.Identity.EntityFramework</summary>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <language>ru</language>
+    <tags>Identity Membership</tags>
+    <dependencies>
+      <dependency id="Microsoft.AspNet.Identity.EntityFramework" version="[1.0.0]" />
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,105 @@
+﻿@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+}
+
+body{
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 20px;
+    text-align:center;
+    background-color: #f7dcb0;
+}
+
+.ball {
+    position: absolute;
+    top:50%;
+    left: 50%;
+    background-color: rgba(0,0,0,0);
+    border:5px solid rgba(0,183,229,0.9);
+    opacity:.9;
+    border-top:5px solid rgba(0,0,0,0);
+    border-left:5px solid rgba(0,0,0,0);
+    border-radius:50px;
+    box-shadow: 0 0 35px #2187e7;
+    width:50px;
+    height:50px;
+    margin:0 auto;
+    -moz-animation:spin .5s infinite linear;
+    -webkit-animation:spin .5s infinite linear;
+}
+@-moz-keyframes spin {
+    0% { -moz-transform:rotate(0deg); }
+    100% { -moz-transform:rotate(360deg); }
+}
+@-moz-keyframes spinoff {
+    0% { -moz-transform:rotate(0deg); }
+    100% { -moz-transform:rotate(-360deg); }
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform:rotate(0deg); }
+    100% { -webkit-transform:rotate(360deg); }
+}
+@-webkit-keyframes spinoff {
+    0% { -webkit-transform:rotate(0deg); }
+    100% { -webkit-transform:rotate(-360deg); }
+}
+
+h1{
+    color: #39311f;
+    text-shadow: 1px 1px 2px #39311f; 
+}
+
+.container{
+    width: 100%;
+}
+
+#form_Search{
+    border: 2px solid #39311f;
+    background-color: #fff5d9;
+    font-size: 20px;
+    width: 104%;
+    padding-left: 2%;
+    margin-left: -2%;
+    border-radius: 30px;
+    height: 60px;
+}
+
+.my_Row{
+    text-align:center;
+    padding-top: 1.5%;
+    padding-bottom: 1.5%;
+    border: 2px solid #39311f;
+    background-color: #fff5d9;
+    font-size: 25px;
+    width: 104%;
+    margin-top: 2%;
+    margin-left: -2%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+}
+
+img{
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px #39311f; 
+}
+@media (max-width: 1024px) {
+  .my_Row {
+    font-size: 18px;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .my_Row {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .my_Row {
+    font-size: 10px;
+  }
+}

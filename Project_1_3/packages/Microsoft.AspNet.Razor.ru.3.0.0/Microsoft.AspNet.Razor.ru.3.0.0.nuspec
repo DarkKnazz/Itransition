@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.AspNet.Razor.ru</id>
+    <version>3.0.0</version>
+    <title>Русские ресурсы Microsoft ASP.NET Razor</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/aspnetcomponent_rtw_RUS.htm</licenseUrl>
+    <projectUrl>http://www.asp.net/web-pages</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>Этот пакет содержит русские вспомогательные сборки для ASP.NET Razor.</description>
+    <summary>Русские ресурсы для пакета Microsoft.AspNet.Razor</summary>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <language>ru</language>
+    <tags>Microsoft AspNet WebPages AspNetWebPages Razor</tags>
+    <dependencies>
+      <dependency id="Microsoft.AspNet.Razor" version="[3.0.0]" />
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,69 @@
+﻿@model PagedList.IPagedList<WebApplication2.Models.Item>
+@using PagedList.Mvc;
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "../";
+}
+
+<head>
+    <title>Iron Finder</title>
+    <link rel="stylesheet" href="Content/bootstrap.css" />
+    <link rel="stylesheet" href="Content/Index.css" />
+    <meta name="viewport" content="width=device-width" />
+</head>
+
+<body>
+    <div class="ball"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <h1><em>Electronic Finder</em></h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <form method="post">
+                    <input type="search" name="search" class="form-control mb-2 mr-sm-2 mb-sm-0" id="form_Search" placeholder="Search...">
+                </form>
+            </div>
+        </div>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {   
+                <div class="row my_Row">
+                    <div class='img-responsive col-lg-2 col-md-2 col-sm-2 col-xs-3'>
+                        <img class="img-responsive" src=@item.src />
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-4">
+                        <a href=@item.href>@item.name</a>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">@item.price</div>
+                    <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3">@item.store</div>
+                </div>
+            }
+        }         
+        @if(Model != null){
+            <div>@Html.PagedListPager(Model, page => Url.Action("Index", new { page }),
+                                                                new PagedListRenderOptions()
+                                                                {
+                                                                    MaximumPageNumbersToDisplay = 5,
+                                                                    DisplayLinkToPreviousPage = PagedListDisplayMode.Never,
+                                                                    DisplayLinkToNextPage = PagedListDisplayMode.Never
+                                                                })</div>   
+        }
+      </div>
+    <script src="../../Content/jquery-1.10.2.min.js"></script>
+    <script>
+        $(window).load(function () {
+            $('.ball').fadeOut('slow');
+        });
+
+        $("#form_Search").keypress(function (e) {
+            if (e.keyCode == 13) {
+                $('.ball').fadeIn('slow');
+            }
+        });
+    </script>
+</body>
