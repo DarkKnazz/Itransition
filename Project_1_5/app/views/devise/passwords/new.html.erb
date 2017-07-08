@@ -1,15 +1,20 @@
-<h2>Forgot your password?</h2>
-
+<div class="container">
+  <div class="row header_Small_Page">
+    Forgot your password?
+  </div>  
+</div>
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+  <%= devise_error_messages!%>
+  <div class="container confirm_Body" style="margin-top: 5%">
+    <div class="field">
+	  <div class="row">
+		<div class="col-lg-4"><%= f.label :email %></div>
+		<div class="col-lg-8">
+			<%= f.email_field :email, autofocus: true, :class => "confirm_Email"%>
+		</div>
+	  </div>
+	</div><br><br> 
+	<%= f.submit "Resend confirmation instructions" , :class => "btn btn-facebook buttons", :id => "button_Forgotten_Password"%>
   </div>
 <% end %>
 

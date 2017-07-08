@@ -1,9 +1,46 @@
-<h1>Hello Rails!</h1>
-<% if user_signed_in? %>
-	Logged in as <strong><%= current_user.email %></strong>.
-	<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-	<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
-<% else %>
-	<%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %> |
-	<%= link_to "Login", new_user_session_path, :class => 'navbar-link' %>
-<% end %>
+<div class="container">
+	<div class="row header_Row">
+		<% if user_signed_in? %>
+			<div class="col-lg-6 name_Row">
+				Online Painter
+			</div>
+			<div class="col-lg-3 login">
+				<strong><%= current_user.email %></strong>
+			</div>
+			<div class="col-lg-2 login" id="edit" onclick="edit_Profile()">
+				Edit Profile
+			</div>
+			<div class="col-lg-1 login" onclick="logout()" id="logout_Inner">
+				<%= link_to "Logout", destroy_user_session_path, :method => :delete, :id => "logout"%>
+			</div>
+		<% else %>
+			<div class="col-lg-10 name_Row">
+				Online Painter
+			</div>
+			<div class="col-lg-1 login" id="sign_Up" onclick="sign_Up()">
+				Sign Up
+			</div>
+			<div class="col-lg-1 login" id="sign_In" onclick="sign_In()">
+				Login
+			</div>
+		<% end %>
+	</div>
+</div>
+
+<script type="text/javascript">
+	sign_Up = function(){
+		document.location.href = "/users/sign_up";
+	}
+
+	sign_In = function(){
+		document.location.href = "/users/sign_in";
+	}
+
+	edit_Profile = function(){
+		document.location.href = "/users/edit";
+	}
+
+	logout = function(){
+		document.location.href = "/users/sign_out";
+	}
+</script>

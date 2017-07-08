@@ -1,16 +1,21 @@
-<h2>Resend confirmation instructions</h2>
-
+<div class="container">
+  <div class="row header_Small_Page">
+  	Resend confirmation instructions
+  </div>  
+</div>
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
+  <%= devise_error_messages!%>	
+  <div class="container confirm_Body">
+    <div class="field">
+	  <div class="row">
+		<div class="col-lg-4"><%= f.label :email , :id => "confirm_Label"%></div>
+		<div class="col-lg-8">
+			<%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), :class => "confirm_Email"%>
+		</div>
+	  </div>
+	</div><br> 
+	<%= f.submit "Resend confirmation instructions" , :class => "btn btn-facebook buttons", :id => "confirm_Button"%>
+	<%= link_to "Log in", new_session_path(resource_name), :class => "btn btn-github buttons", :id => "confirm_Login_Button"%><br><br>
+	<%= render "devise/shared/links" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>

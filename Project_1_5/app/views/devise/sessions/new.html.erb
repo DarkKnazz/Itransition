@@ -1,26 +1,48 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="container">
+  <div class="row header_Row" id="header_Login">
+    <div class="col-lg-9" style="text-align: left">Log In</div>
+    <div class="col-lg-3">
+      <a class="btn btn-social-icon btn-sm btn-facebook" href="/users/auth/facebook">
+        <i class="fa fa-facebook"></i>
+      </a>
+      <a class="btn btn-social-icon btn-sm btn-vk" href="/users/auth/vkontakte">
+        <i class="fa fa-vk"></i>
+      </a>  
+      <a class="btn btn-social-icon btn-sm btn-twitter" href="/users/auth/twitter">
+        <i class="fa fa-twitter"></i>
+      </a> 
     </div>
-  <% end -%>
+  </div>  
+</div>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+<div class="container" id="login_Body">
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <div class="row">
+      <div class="col-lg-4"><%= f.label :email, :class=>"label_Input"%></div>
+      <div class="col-lg-8"><%= f.email_field :email, autofocus: true, :class=>"input_Field" %></div>
+    </div>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <br>
+  <div class="field">
+    <div class="row">
+      <div class="col-lg-4"><%= f.label :password, :class=>"label_Input" %></div>
+      <div class="col-lg-8"><%= f.password_field :password, autocomplete: "off" , :class=>"input_Field"%></div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-lg-4">
+      <%= f.label :remember_me, :class=>"label_Input" %>
+    </div>
+    <div class="col-lg-8">
+      <%= f.check_box :remember_me %>
+    </div>
+  </div>
+  <br>
+  <%= f.submit "Log in" , :class=> 'btn btn-facebook buttons', :id => "button_Login"%>
+  <%= link_to "Sign up", new_registration_path(resource_name), :class=> 'btn btn-github buttons', :id => "button_Sign_Up"%><br />
+  <br>
+  <%= render "devise/shared/links" %>
+  <% end %>
+</div>
