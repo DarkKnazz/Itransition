@@ -1,0 +1,238 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ /*Main Page of the site*/
+.errors{
+	text-align: center;
+}
+
+.header_Row{
+	color: white;
+	background-color: black;
+	font-size: 17px;
+}
+.name_Row{
+	padding-top: 1%;
+	padding-bottom: 1%;
+}
+.login{
+	transition: background-color 0.6s, color 0.6s, box-shadow 0.6s;
+	border-left: 4px solid white;
+	cursor: pointer;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	text-align: center;
+}
+#sign_Up:hover{
+	background-color: white;
+	color: black;
+	box-shadow: 1px 1px 1px black;
+}
+#sign_In:hover{
+	background-color: white;
+	color: black;
+	box-shadow: 1px 1px 1px black;
+}
+#logout_Inner:hover{
+	background-color: white;
+	color: black;
+	box-shadow: 1px 1px 1px black;
+}
+#logout{
+	transition: background-color 0.4s, color 0.4s;
+	color: white;
+	height:20px;
+	text-decoration: none;
+}
+#logout:hover{
+	color: black;
+	text-decoration: none;
+}
+#edit:hover{
+	background-color: white;
+	color: black;
+	box-shadow: 1px 1px 1px black;
+}
+
+/*Log In page of the site*/
+#header_Login{
+	padding-top: 1%;
+	padding-bottom: 1%;
+	padding-left: 10%;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+}
+#login_Body{
+	padding-left: 22%;
+	padding-right: 22%;
+	margin-top: 5%;
+}
+.label_Input{
+	font-size: 20px;
+}
+.input_Field{
+	width: 100%;
+	height: 40px;
+}
+.buttons{
+	color: white;
+	width: 100%;
+	font-size: 18px;
+	margin-top:1%;
+}
+#button_Login{
+	color: white;
+}
+#button_Sign_Up{
+	color: white;
+}
+
+/*Confirmation page of the website*/
+.header_Small_Page{
+	background-color: black;
+	color: white;
+	padding-bottom: 1%;
+	padding-top: 1%;
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+}
+.confirm_Body{
+	padding-left: 20%;
+	padding-right: 20%;
+	margin-top: 5%;
+	font-size: 18px
+}
+.confirm_Email{
+	width: 100%;
+	height: 40px;
+}
+#confirm_Button{
+	color: white;
+}
+#confirm_Login_Button{
+	color: white;
+}
+
+/*Restoring a password of the website*/
+#button_New_Password{
+	color: white;
+}
+
+/*Forgotten password*/
+#button_Forgotten_Password{
+	color: white;
+}
+#button_Sign_Up{
+	color: white;
+}
+#button_Update{
+	color: white;
+}
+#button_Cancel{
+	color: white;
+}
+
+.toggle_Menu{
+	position: absolute;
+	top: 50px;
+	color: black;
+	border: 3px solid black;
+	width: 100%;
+	left: 0;
+	padding: 3%;
+	background-color: white;
+	z-index: 9999;
+	display: none;
+}
+
+.create_New_Room{
+	display: none;
+	padding-left: 20%;
+	padding-right: 20%;
+	font-size: 18px;
+	margin-top: 3%;
+}
+
+#button_Create_Room{
+	color: white;
+}
+
+.cont_Posts{
+	padding-left: 20%;
+	padding-right: 20%;
+	font-size: 16px;
+	margin-top: 2%;
+}
+
+.Toolbar {
+    float: left;
+    font-family: 'Trebuchet MS'; 
+    font-size: 14px;
+    font-variant: small-caps;
+    text-align: center;
+    background: #F2F7FE;
+    padding: 10px 15px 3px 10px;
+    margin-bottom: 1px;
+    margin-right: 1px;
+    border: 1px solid #7B899B;
+}
+
+.Toolbar button {
+    padding: 6px;
+    margin: 7px 2px;
+    font-variant: normal;
+    font-size: 12px;
+}
+
+.CanvasContainer {
+    clear: both;
+    padding-left: 10%;
+    padding-right: 10%;
+    display: flex;
+    text-align: center;
+    margin-top: 3%;
+}
+
+canvas {
+    border: 1px solid lightgray;
+    border-radius: 2px;
+}
+
+img {
+    padding: 2px;
+    border: 2px solid #F2F7FE;
+}
+
+img:hover {
+    border: 2px groove #E4F0FE;
+    background: white;
+}
+
+
+img.Selected {
+    border: 2px groove #E4F0FE;
+}
+
+#savedCopyContainer {
+    display: none;
+}
+
+#savedCopyContainer img {
+    width: 250px;
+    height: 150px;
+}

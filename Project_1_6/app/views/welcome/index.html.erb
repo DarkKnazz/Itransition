@@ -1,0 +1,112 @@
+<div class="container-fluid">
+	<div class="row header_Row">
+		<% if user_signed_in? %>
+			<div class="col-lg-6 col-md-5 col-sm-3 col-xs-4 name_Row">
+				Online Painter
+			</div>
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 login">
+				<strong id="user_Signed"><%= current_user.email %></strong>
+				<div class="toggle_Menu">
+					Create new room
+				</div>
+			</div>
+			<div class="col-lg-2 col-md-2 col-sm-3 col-xs-3 login" id="edit" onclick="edit_Profile()">
+				Edit Profile
+			</div>
+			<div class="col-lg-1 col-md-2 col-sm-3 col-xs-2 login" onclick="logout()" id="logout_Inner">
+				<%= link_to "Logout", destroy_user_session_path, :method => :delete, :id => "logout"%>
+			</div>
+		<% else %>
+			<div class="col-lg-10 col-md-8 col-sm-8 col-xs-7 name_Row">
+				Online Painter
+			</div>
+			<div class="col-lg-1 col-md-2 col-sm-2 col-xs-3 login" id="sign_Up" onclick="sign_Up()">
+				Sign Up
+			</div>
+			<div class="col-lg-1 col-md-2 col-sm-2 col-xs-2 login" id="sign_In" onclick="sign_In()">
+				Login
+			</div>
+		<% end %>
+	</div>
+</div>
+<% if user_signed_in? %>
+	<div class="create_New_Room container">
+	<%= form_for(Room.new) do |f| %>
+	<div style="border: 1px solid lightgray; padding: 3%; border-radius: 2px;">
+		<div class="row">
+			<div class="col-lg-4"><%= f.label :name %></div>
+			<div class="col-lg-8"><%= f.text_field :name, :class => "confirm_Email" %><br></div>
+		</div>
+    	<%= f.submit "Create new room", :class=> 'btn btn-facebook buttons', :id => "button_Create_Room"%>
+	</div>
+	<% end %>
+	</div>
+	<% Room.all.each do |room| %>
+	<div class="container cont_Posts">
+		<div style="border: 1px solid lightgray; padding: 3%; border-radius: 2px;">
+		<div class="row">
+			<div class="col-lg-1">
+				<%= room.id %>
+			</div>
+			<div class="col-lg-7">
+				<%= room.name %>
+			</div>
+			<div class="col-lg-2">
+				<%= link_to 'Show', room, :id => "show"%>
+			</div>
+			<div class="col-lg-2">
+				<%= link_to 'Destroy', room, method: :delete %>
+			</div>
+		</div>
+    	</div>
+	</div>
+	<% end %>
+<% end %>
+
+<script type="text/javascript">
+	var toggleVar = 0;
+	var create_Var = 0;
+	$('document').ready(function(){
+		toggleVar = 0;
+		create_Var = 0;
+	})
+	sign_Up = function(){
+		document.location.href = "/users/sign_up";
+	}
+
+	sign_In = function(){
+		document.location.href = "/users/sign_in";
+	}
+
+	edit_Profile = function(){
+		document.location.href = "/users/edit";
+	}
+
+	logout = function(){
+		document.location.href = "/users/sign_out";
+	}
+
+	$('#user_Signed').on("click", function(){
+		if(toggleVar == 0){
+			$('.toggle_Menu').fadeIn(400);
+			toggleVar = 1;
+		}
+		else{
+			$('.toggle_Menu').fadeOut(400);
+			toggleVar = 0;
+		}
+	})
+
+	$('.toggle_Menu').on("click", function(){
+		if(create_Var == 0){
+			$('.create_New_Room').fadeIn(600);
+			$('.toggle_Menu').fadeOut(400);
+			toggleVar = 0;
+			create_Var = 1;
+		}
+	})
+
+	$('#show').on("click", function(){
+		localStorage.setItem("reload_Page", 0);
+	})
+</script>

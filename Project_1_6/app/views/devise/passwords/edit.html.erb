@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="row header_Small_Page">
+    Change your password
+  </div>  
+</div>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages!%>
+  <%= f.hidden_field :reset_password_token %>
+  <div class="container confirm_Body">
+    <div style="border: 1px solid lightgray; padding: 3%; border-radius: 2px;">
+      <div class="row">
+        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+          <%= f.label :password, "New password" %>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+          <%= f.password_field :password, autofocus: true, autocomplete: "off", :class => "confirm_Email"%>
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+          <%= f.label :password_confirmation, "Confirm new password" %>
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+          <%= f.password_field :password_confirmation, autocomplete: "off", :class => "confirm_Email"%>
+        </div>
+      </div><br>
+      <%= f.submit "Change my password", :id => "button_New_Password", :class => "btn btn-facebook buttons"%>
+    </div>
+  </div>
+<% end %>

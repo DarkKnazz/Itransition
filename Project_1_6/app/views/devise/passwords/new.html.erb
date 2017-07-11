@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <div class="row header_Small_Page">
+    Forgot your password?
+  </div>  
+</div>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+  <%= devise_error_messages!%>
+  <div class="container confirm_Body" style="margin-top: 5%">
+  	<div style="border: 1px solid lightgray; padding: 3%; border-radius: 2px;">
+    	<div class="field">
+	  		<div class="row">
+				<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"><%= f.label :email %></div>
+				<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+					<%= f.email_field :email, autofocus: true, :class => "confirm_Email"%>
+				</div>
+	  		</div>
+		</div><br><br> 
+		<%= f.submit "Resend confirmation instructions" , :class => "btn btn-facebook buttons", :id => "button_Forgotten_Password"%>
+  	</div>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

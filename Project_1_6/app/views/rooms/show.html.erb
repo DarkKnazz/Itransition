@@ -1,0 +1,138 @@
+<div class="container-fluid">
+  <div class="row header_Small_Page" style="text-align: center" id="header_Show">
+    # <%= @room.id %> "<%= @room.name %>"
+  </div>  
+</div>
+
+<div class="container" style="background-color: lightgray; border: 1px solid gray;padding: 1%;">
+	<div class="row">
+		<div class="col-lg-1">
+			<div style="width: 50px; height: 50px; background-color: rgb(212,21,29)" onclick="changeColor('rgb(212,21,29)', this)"></div>
+		</div>
+		<div class="col-lg-1">
+			<div style="width: 50px; height: 50px; background-color: rgb(131,190,61)" onclick="changeColor('rgb(131,190,61)', this)"></div>			
+		</div>
+		<div class="col-lg-1">
+			<div style="width: 50px; height: 50px; background-color: rgb(0,86,166)" onclick="changeColor('rgb(0,86,166)', this)"></div>			
+		</div>
+		<div class="col-lg-2 btn btn-github" style="color: white; padding-top: 1.2%; padding-bottom: 1%; margin-right: 14px;" onclick="changeThickness(1, this)">Thin brush</div>
+		<div class="col-lg-2 btn btn btn-github" style="color: white; padding-top: 1.2%; padding-bottom: 1%; margin-right: 14px;" onclick="changeThickness(5, this)">Middle brush</div>
+		<div class="col-lg-2 btn btn-github" style="color: white; padding-top: 1.2%; padding-bottom: 1%; margin-right: 14px;" onclick="changeThickness(10, this)">Big brush</div>
+		<div class="col-lg-1 btn btn-github" style="color: white; padding-top: 1.2%; padding-bottom: 1%; margin-right: 14px;" onclick="saveCanvas()">Save</div>
+		<div class="col-lg-1 btn btn btn-github" style="color: white; padding-top: 1.2%; padding-bottom: 1%;" onclick="clearCanvas()">Clear</div>
+	</div>
+</div>
+
+<div class="container">
+	<div class="row">
+		<div class="CanvasContainer">
+        	<canvas id="drawingCanvas" width="1000" height="500"></canvas>
+		</div>
+		<%= link_to 'Back', root_path, :class => "click_For_Reload" %>
+	</div>
+</div>
+
+<script type="text/javascript">
+	var reload = localStorage.getItem("reload_Page");
+	if(reload == null || reload == 0){
+		window.location.reload();
+		localStorage.setItem("reload_Page", 1)
+	}
+
+	$(".click_For_Reload").on("click", function(){
+		localStorage.setItem("reload_Page", 0);
+	})
+</script>
+
+<script type="text/javascript">
+	var canvas;
+	var context;
+	var id = document.getElementById("header_Show").innerHTML.split(" ")[5];
+	window.onload = function() {
+      canvas = document.getElementById("drawingCanvas");
+      context = canvas.getContext("2d");
+      var contain = localStorage.getItem(id);
+      console.log(contain);
+      if(contain != null){
+      	var img = new Image();
+      	img.src = contain;
+      	img.onload = function(){
+			canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+      	}
+      } 
+      // Подключаем требуемые для рисования события
+      canvas.onmousedown = startDrawing;
+      canvas.onmouseup = stopDrawing;
+      canvas.onmouseout = stopDrawing;
+      canvas.onmousemove = draw;
+    }
+
+    var previousColorElement;
+
+	function changeColor(color, imgElement)
+	{
+    	// 	Меняем текущий цвет рисования
+		context.strokeStyle = color;
+	
+		// Меняем стиль элемента <img>, по которому щелкнули
+		imgElement.className = "Selected";
+	
+		// Возвращаем ранее выбранный элемент <img> в нормальное состояние
+		if (previousColorElement != null)
+	   		previousColorElement.className = "";
+	   
+		previousColorElement = imgElement;
+	}
+
+	// Отслеживаем элемент <img> для толщины линии, по которому ранее щелкнули
+	var previousThicknessElement;
+
+	function changeThickness (thickness, imgElement)
+	{
+    	// Изменяем текущую толщину линии
+		context.lineWidth = thickness;
+	
+		// Возвращаем ранее выбранный элемент <img> в нормальное состояние
+		if (previousThicknessElement != null)
+	   		previousThicknessElement.className = "";
+	   
+		previousThicknessElement = imgElement;
+	}
+
+	function startDrawing(e) {
+		// Начинаем рисовать
+		isDrawing = true;
+	
+		// Создаем новый путь (с текущим цветом и толщиной линии) 
+		context.beginPath();
+	
+		// Нажатием левой кнопки мыши помещаем "кисть" на холст
+		context.moveTo(e.pageX - canvas.offsetLeft, e.pageY - canvas.offsetTop);
+	}
+
+	function draw(e) {
+		if (isDrawing == true)
+		{
+	  		// Определяем текущие координаты указателя мыши
+			var x = e.pageX - canvas.offsetLeft;
+			var y = e.pageY - canvas.offsetTop;
+		
+			// Рисуем линию до новой координаты
+			context.lineTo(x, y);
+			context.stroke();
+		}
+	}
+
+	function stopDrawing() {
+    	isDrawing = false;
+	}
+
+	function clearCanvas() {
+		context.clearRect(0, 0, canvas.width, canvas.height);
+	}
+
+	function saveCanvas(){
+		var cont_Canvas = canvas.toDataURL();
+		localStorage.setItem(id, cont_Canvas);
+	}
+</script>
